@@ -31,11 +31,11 @@ The focus is not on tutorials or notes, but on:
 ---
 
 ## 📂 Repository Structure
--fundamentals/ → Python, DSA, data processing foundations
--machine-learning/ → ML models (from scratch + sklearn)
--deep-learning/ → Neural networks, training pipelines
--genai/ → LLMs, RAG systems, embeddings, vector DB
--projects/ → End-to-end production systems
+- fundamentals/ → Python, DSA, data processing foundations
+- machine-learning/ → ML models (from scratch + sklearn)
+- deep-learning/ → Neural networks, training pipelines
+- genai/ → LLMs, RAG systems, embeddings, vector DB
+- projects/ → End-to-end production systems
 
 
 ---
