@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment (CRITICAL)
+env/
+venv/
+.venv/
+aiml_env/
+
+# VS Code
+.vscode/
+
+# Jupyter (future)
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model files (later)
+*.pkl
+*.joblib
+
+# Data (optional later)
+data/
