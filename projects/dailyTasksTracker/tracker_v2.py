@@ -49,19 +49,49 @@ def save_data():
 def view_data():
     window = tk.Toplevel(root)
     window.title("Past Entries")
+    window.geometry("800x500")
 
     tree = ttk.Treeview(window, columns=("Date", "Day"), show="headings")
     tree.heading("Date", text="Date")
     tree.heading("Day", text="Day")
-
     tree.pack(fill="both", expand=True)
 
-    cursor.execute("SELECT id, date, day FROM logs ORDER BY id DESC")
+    # TEXT BOX FOR DETAILS
+    detail_box = tk.Text(window, height=15)
+    detail_box.pack(fill="both", expand=True)
+
+    cursor.execute("SELECT * FROM logs ORDER BY id DESC")
     rows = cursor.fetchall()
 
     for row in rows:
-        tree.insert("", tk.END, values=(row[1], row[2]))
+        tree.insert("", tk.END, iid=row[0], values=(row[1], row[2]))
 
+    # CLICK EVENT
+    def show_details(event):
+        selected = tree.focus()
+        if selected:
+            cursor.execute("SELECT * FROM logs WHERE id=?", (selected,))
+            data = cursor.fetchone()
+
+            detail_box.delete("1.0", tk.END)
+            detail_box.insert(tk.END, f"""
+Date: {data[1]}
+Day: {data[2]}
+
+--- AIML ---
+{data[3]}
+
+--- CAT ---
+{data[4]}
+
+--- HSD ---
+{data[5]}
+
+--- REVIEW ---
+{data[6]}
+""")
+
+    tree.bind("<<TreeviewSelect>>", show_details)
 # =============================
 # UI
 # =============================
